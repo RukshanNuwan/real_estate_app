@@ -48,7 +48,6 @@ const Banner = ({purpose, imageUrl, title_1, title_2, desc_1, desc_2, linkName, 
 export default function Home({propertiesForSale, propertiesForRent}) {
   return (
     <Box>
-      <h1>hello</h1>
       <Banner
         purpose='RENT A HOME'
         title_1='Rental Homes for'
@@ -77,9 +76,11 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008'
       />
 
-      {propertiesForSale.map((property, index) => (
-        <Property property={property} key={index}/>
-      ))}
+      <Flex flexWrap='wrap'>
+        {propertiesForSale.map((property, index) => (
+          <Property property={property} key={index}/>
+        ))}
+      </Flex>
     </Box>
   )
 }

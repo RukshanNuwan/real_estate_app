@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {Box, Flex, Text} from '@chakra-ui/react';
+import {Avatar, Box, Flex, Text} from '@chakra-ui/react';
 import millify from "millify";
 import {GoVerified} from "react-icons/go";
+import {FaBath, FaBed} from "react-icons/fa";
+import {BsGridFill} from "react-icons/bs";
 
 import defaultImage from '../assets/images/house.jpg';
 
@@ -34,9 +36,21 @@ const Property = ({
                 {isVerified && <GoVerified/>}
               </Box>
 
-              <Text fontWeight='bold' fontSize='lg'>AED {price}{rentFrequency && `/${rentFrequency}`}</Text>
+              <Text fontWeight='bold' fontSize='lg'>AED {millify(price)}{rentFrequency && `/${rentFrequency}`}</Text>
             </Flex>
+
+            <Box>
+              <Avatar size='sm' src={agency?.logo?.url}/>
+            </Box>
           </Flex>
+
+          <Flex alignItems='center' p='1' justifyContent='space-between' w='250px' color='blue.400'>
+            {rooms} <FaBed/> | {baths} <FaBath/> | {millify(area)} sqft <BsGridFill/>
+          </Flex>
+
+          <Text fontSize='lg'>
+            {title.length > 30 ? `${title.substring(0, 30)}...` : title}
+          </Text>
         </Box>
       </Flex>
     </Link>
